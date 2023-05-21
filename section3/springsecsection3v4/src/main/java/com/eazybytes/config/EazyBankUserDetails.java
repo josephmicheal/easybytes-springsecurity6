@@ -26,7 +26,7 @@ public class EazyBankUserDetails implements UserDetailsService {
         if (customer == null) {
             throw new UsernameNotFoundException("User details not found for the user : " + username);
         }
-        return new User(customer.getEmail(),customer.getPwd(),List.of(new SimpleGrantedAuthority(customer.getRole())));
+        return new User(customer.getEmail(),customer.getPassword(),List.of(new SimpleGrantedAuthority(customer.getRole())));
     }
 
 }

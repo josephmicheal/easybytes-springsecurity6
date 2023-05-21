@@ -1,18 +1,17 @@
 package com.eazybytes.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private int id;
     private String email;
-    @Column(name = "password")
-    private String pwd;
+
+    private String password;
     private String role;
 
     public int getId() {
@@ -31,12 +30,12 @@ public class Customer {
         this.email = email;
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
+    public void setPassword(String pwd) {
+        this.password = pwd;
     }
 
     public String getRole() {
