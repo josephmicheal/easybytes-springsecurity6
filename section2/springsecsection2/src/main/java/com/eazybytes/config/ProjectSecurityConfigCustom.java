@@ -2,28 +2,42 @@ package com.eazybytes.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-//@Profile("custom")
-public class ProjectSecurityConfigCustom {
+public class ProjectSecurityConfig {
 
-    //@Bean
+    @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
 
         /**
          *  Below is the custom security configurations
          */
 
-        http.authorizeHttpRequests()
+        http.authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/myAccount","/myBalance","/myLoans","/myCards").authenticated()
-                        .requestMatchers("/notices","/contact").permitAll()
-                .and().formLogin()
-                .and().httpBasic();
+                        .requestMatchers("/notices","/contact").permitAll())
+                .formLogin(Customizer.withDefaults())
+                .httpBasic(Customizer.withDefaults());
         return http.build();
 
+        /**
+         *  Configuration to deny all the requests
+         */
+        /*http.authorizeHttpRequests(requests -> requests.anyRequest().denyAll())
+                .formLogin(Customizer.withDefaults())
+                .httpBasic(Customizer.withDefaults());
+        return http.build();*/
+
+        /**
+         *  Configuration to permit all the requests
+         */
+        /*http.authorizeHttpRequests(requests -> requests.anyRequest().permitAll())
+                .formLogin(Customizer.withDefaults())
+                .httpBasic(Customizer.withDefaults());
+        return http.build();*/
     }
 
 }
