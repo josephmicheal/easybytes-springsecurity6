@@ -7,10 +7,15 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "serial")
+    @Column(columnDefinition = "serial",name = "customer_id")
     private int id;
+
+    private String name;
     private String email;
 
+    @Column(name = "mobile_number")
+    private String mobileNumber;
+    @Column(name = "pwd")
     private String password;
     private String role;
 
@@ -45,4 +50,22 @@ public class Customer {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+
 }

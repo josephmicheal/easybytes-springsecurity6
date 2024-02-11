@@ -5,6 +5,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.time.LocalDate;
+
 @Entity
 public class Accounts {
 
@@ -22,7 +24,7 @@ public class Accounts {
 	private String branchAddress;
 
 	@Column(name = "create_dt")
-	private String createDt;
+	private LocalDate createDt;
 	
 	
 	public int getCustomerId() {
@@ -49,10 +51,10 @@ public class Accounts {
 	public void setBranchAddress(String branchAddress) {
 		this.branchAddress = branchAddress;
 	}
-	public String getCreateDt() {
+	public LocalDate getCreateDt() {
 		return createDt;
 	}
-	public void setCreateDt(String createDt) {
+	public void setCreateDt(LocalDate createDt) {
 		this.createDt = createDt;
 	}
 	

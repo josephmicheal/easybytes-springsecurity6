@@ -1,20 +1,22 @@
 package com.eazybytes.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import org.hibernate.annotations.GenericGenerator;
+import jakarta.persistence.*;
 
 @Entity
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
-    @GenericGenerator(name = "native",strategy = "native")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial",name = "customer_id")
     private int id;
+
+    private String name;
     private String email;
-    private String pwd;
+
+    @Column(name = "mobile_number")
+    private String mobileNumber;
+    @Column(name = "pwd")
+    private String password;
     private String role;
 
     public int getId() {
@@ -34,11 +36,11 @@ public class Customer {
     }
 
     public String getPwd() {
-        return pwd;
+        return password;
     }
 
     public void setPwd(String pwd) {
-        this.pwd = pwd;
+        this.password = pwd;
     }
 
     public String getRole() {
@@ -48,4 +50,22 @@ public class Customer {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+
 }

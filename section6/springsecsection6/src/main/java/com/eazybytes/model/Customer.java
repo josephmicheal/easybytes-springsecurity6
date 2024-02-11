@@ -4,9 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.time.LocalDate;
+
 @Entity
 public class Customer {
 
+    //CREATE SEQUENCE native START 1 INCREMENT 5;
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
@@ -26,7 +29,7 @@ public class Customer {
     private String role;
 
     @Column(name = "create_dt")
-    private String createDt;
+    private LocalDate createDt;
 
     public int getId() {
         return id;
@@ -76,11 +79,11 @@ public class Customer {
         this.role = role;
     }
 
-    public String getCreateDt() {
+    public LocalDate getCreateDt() {
         return createDt;
     }
 
-    public void setCreateDt(String createDt) {
+    public void setCreateDt(LocalDate createDt) {
         this.createDt = createDt;
     }
 }

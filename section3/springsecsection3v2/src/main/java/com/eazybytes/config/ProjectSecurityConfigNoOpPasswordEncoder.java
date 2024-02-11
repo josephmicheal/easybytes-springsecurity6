@@ -11,7 +11,12 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-public class ProjectSecurityConfigNoOpPasswordEncoder {
+public class
+
+
+
+
+ProjectSecurityConfigNoOpPasswordEncoder {
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
